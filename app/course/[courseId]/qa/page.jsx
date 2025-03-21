@@ -25,7 +25,6 @@ const QA = () => {
                 studyType: 'Question/Answer'
             });
 
-            console.log(result);
             setQaData(result.data);
 
             // Ensure content and faqs exist before mapping
@@ -34,7 +33,6 @@ const QA = () => {
             ) || [];
 
             setQa(formattedQa);
-            console.log("Formatted QA Data:", formattedQa);
 
         } catch (error) {
             console.error("Error fetching QA data:", error);

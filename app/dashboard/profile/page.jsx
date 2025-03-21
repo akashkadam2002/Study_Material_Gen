@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { User, Mail, Calendar, Edit } from "lucide-react";
+import { User, Mail, Calendar, Phone } from "lucide-react";
 import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 import Image from "next/image";
 
@@ -9,11 +9,13 @@ const Profile = () => {
   // Mock user data (Replace with real user data)
   const user = {
     name: "Akash Kadam",
-    email: "akashkadam1817@gmail.com", 
+    email: "akashkadam1817@gmail.com",
+    mobile: "7620671124",
     role: "Software Developer",
-    bio: "Passionate developer and tec enthusiast. I love creating intuitive user experiences and exploring new technologies.",
+    bio: "Passionate developer and tech enthusiast. I love creating intuitive user experiences and exploring new technologies.",
     joined: "June 2024",
     avatar: "/profile.avif", // Replace with user's avatar
+    resume: "/Akash_Kadam_Resume.pdf", // Path to your resume file
     social: {
       instagram: "https://www.instagram.com/akash_kadam_0709?igsh=YjQ1NHlnZXVoNDFn",
       linkedin: "https://www.linkedin.com/in/akash-kadam-051965288/",
@@ -42,9 +44,26 @@ const Profile = () => {
 
       {/* User Details */}
       <div className="mt-6 space-y-4">
+        {/* Email (Clickable) */}
         <div className="flex items-center space-x-3">
           <Mail className="text-gray-500" />
-          <p className="text-gray-700">{user.email}</p>
+          <a
+            href={`mailto:${user.email}`}
+            className="text-blue-600 hover:underline"
+          >
+            {user.email}
+          </a>
+        </div>
+
+        {/* Mobile (Clickable) */}
+        <div className="flex items-center space-x-3">
+          <Phone className="text-gray-500" />
+          <a
+            href={`tel:${user.mobile}`}
+            className="text-gray-700 hover:underline"
+          >
+            {user.mobile}
+          </a>
         </div>
 
         <div className="flex items-center space-x-3">
@@ -81,13 +100,20 @@ const Profile = () => {
         </a>
       </div>
 
-      {/* Edit Profile Button */}
+      {/* Download Resume Button */}
       <div className="mt-6">
-        <Button className="flex items-center space-x-2">
-          <Edit />
-          <span>Edit Profile</span>
-        </Button>
+        <a
+          href="https://drive.google.com/uc?export=download&id=1psNSe6izMktuAzIIJ1Ohkz69_j1NoLc1"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block"
+        >
+          <Button className="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white">
+            <span>Download Resume</span>
+          </Button>
+        </a>
       </div>
+
     </div>
   );
 };
